@@ -1,0 +1,36 @@
+# render.yaml — Configuração do serviço no Render.com
+# Faça deploy conectando este repositório ao Render
+
+services:
+  - type: web
+    name: hf006-mqtt-ws-bridge
+    runtime: node
+    plan: free                     # Plano gratuito do Render
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+
+    # Variáveis de ambiente — CONFIGURE NO DASHBOARD DO RENDER
+    # (NÃO coloque senhas aqui em produção, use o painel do Render)
+    envVars:
+      - key: PORT
+        value: 3000
+
+      # URL do seu broker HiveMQ Cloud (formato: mqtts://xxxx.hivemq.cloud:8883)
+      - key: MQTT_URL
+        sync: false               # valor definido manualmente no Render
+
+      # Credenciais do HiveMQ Cloud
+      - key: MQTT_USER
+        sync: false
+
+      - key: MQTT_PASS
+        sync: false
+
+      # Chave de API para autenticar o Bubble e os clientes WebSocket
+      # Gere uma string aleatória forte: ex. openssl rand -hex 32
+      - key: WS_SECRET
+        sync: false
+
+      - key: NODE_ENV
+        value: production
