@@ -47,7 +47,7 @@ const mqttOptions = {
   password:          MQTT_PASSWORD,
   protocol: 'mqtts',
   port: 8883,
-  rejectUnauthorized: true,
+  rejectUnauthorized: false,
   reconnectPeriod:   5000,
   keepalive:         60,
 };
