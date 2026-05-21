@@ -45,6 +45,8 @@ const deviceStatus = {}; // { [deviceId]: { ...statusPayload, lastSeen: Date } }
 const mqttOptions = {
   username:          MQTT_USERNAME,
   password:          MQTT_PASSWORD,
+  protocol: 'mqtts',
+  port: 8883,
   rejectUnauthorized: true,
   reconnectPeriod:   5000,
   keepalive:         60,
