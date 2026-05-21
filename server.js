@@ -43,16 +43,15 @@ const deviceStatus = {}; // { [deviceId]: { ...statusPayload, lastSeen: Date } }
 // MQTT CLIENT
 // ============================================================
 const mqttOptions = {
-  username:          MQTT_USERNAME,
-  password:          MQTT_PASSWORD,
-  protocol: 'mqtts',
+  host: '2df0c5c0ede74eb88f846ad7b816f47c.s1.eu.hivemq.cloud',
   port: 8883,
-  rejectUnauthorized: false,
-  reconnectPeriod:   5000,
-  keepalive:         60,
+  protocol: 'mqtts', // conexão TLS implícita
+  username: 'Hoffer002',
+  password: 'Hoffer@@2020',
+  rejectUnauthorized: false // desativa verificação do certificado
 };
 
-const mqttClient = mqtt.connect(MQTT_BROKER_URL, mqttOptions);
+const mqttClient = mqtt.connect(mqttOptions);
 
 mqttClient.on('connect', () => {
   console.log('[MQTT] Conectado ao broker:', MQTT_BROKER_URL);
